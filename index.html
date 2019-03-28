@@ -4,9 +4,161 @@
 	<meta charset='utf-8'>
 	<title>James Lee - Github.io</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
+	<style>
+		/*CSS reset settings here*/
+		*{
+			margin: 0px;
+			padding: 0px;
+			margin: 0 auto;
+			font-family: Arial;
+			vertical-align: top;
+			text-align: center;
+		}
+		.test {
+			display: inline-block;
+		}
+		.test h1 {
+			display: block;
+		}
+		#container {
+			border: 2px solid black;
+			background-color: #c4c4c4;
+			height: 655px;
+			width: 520px;
+			padding: 50px 30px;
+		}
+		.halves {
+			display: block;
+		}
+		#top_half {
+			vertical-align: top;
+			width: 100%;
+		}
+		#display {
+			display: inline-block;
+			height: 250px;
+			width: 270px;
+			background-color: black;
+			padding-top: 25px;
+		}
+		h2 {
+			font-size: 200px;
+			vertical-align: center;
+			color: white;
+			font-weight: 100;
+		}
+		#up_and_down {
+			display: inline-block;
+			width: 42%;
+			margin-left: 20px;
+		}
+		#up_and_down button {
+			height: 125px;
+			width: 100%;
+		}
+		#up {
+			background-color: #009c06;
+		}
+		#down {
+			background-color: #e90000;
+			margin-top: 25px;
+		}
+		#panel {
+			padding-top: 50px;
+		}
+		.panel_sections {
+			display: inline-block;
+			width: 31%;
+		}
+		#panel button {
+			font-size: 100px;
+			border: 2px solid black;
+			background-color: white;
+			border-radius: 100%;
+			padding: 20px 50px;
+			margin-bottom: 30px;
+		}
+	</style>
 </head>
 <body>
-  <h1>Hello world</h1>
-  <script type='text/javascript' src='page.js'></script>
+	<div id='original' class='test'>
+		<h1>ORIGINAL</h1>
+  		<img src='https://acomassetsint.blob.core.windows.net/variations/panel.png'>
+  	</div>
+
+  	<div id='duplicate' class='test'>
+  		<h1>DUPLICATE</h1>
+  		<div id='container'>
+  			<div class='halves'>
+  				<div id='top_half'>
+	  				<div id='display'>
+	  					<h2>2</h2>
+	  				</div>
+	  				<div id='up_and_down'>
+	  					<button id='up' type='button'></button>
+	  					<button id='down' type='button'></button>
+	  				</div>
+	  			</div>
+  			</div>
+  			<div class='halves'>
+  				<div id='panel'>
+  					<div class='panel_sections'>
+	  					<button type='button'>1</button>
+	  					<button type='button'>3</button>
+	  				</div>
+	  				<div class='panel_sections'></div>
+	  				<div class='panel_sections'>
+	  					<button type='button'>2</button>
+	  					<button type='button'>4</button>
+	  				</div>
+  				</div>
+  			</div>
+  		</div>
+  	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script>
+		// Function that takes a string as input and returns an object
+		// Object has keys which are characters in the string, and corresponding values are frequency in the string
+		var text = 'aAabb ccccdddeff';
+
+		function charFreq(text)
+		{
+			let freqObject = {};
+			for (let i=0;i<text.length;i++)
+			{
+				let tempChar = text[i].toLowerCase();
+				if (freqObject[tempChar] && tempChar !== ' ')
+				{
+					freqObject[tempChar]++;
+				}
+				else if (tempChar == ' ')
+				{
+					continue;
+				}
+				else
+				{
+					freqObject[tempChar] = 1;
+				}
+			}
+			return freqObject;
+		}
+		var result = charFreq(text);
+		console.log(result);
+
+		function showString(text)
+		{
+			console.log(text);
+		}
+		var result2 = showString(text);
+		console.log(result2);
+
+
+		// Edge case 1: do not insert whitespaces from the input string into the object
+		// While iterating through for loop, also check character in string to ensure not whitespace
+		// If whitespace, continue to next iteration
+
+		// Edge case 2: if there are capital letters in the string, do not return new characters, but do not change the original string
+		// Create tempChar so text string is not changed, and check tempChar
+	</script>
 </body>
 </html>
